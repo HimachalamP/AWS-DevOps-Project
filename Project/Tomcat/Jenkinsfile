@@ -1,0 +1,93 @@
+pipeline{
+    agent {
+      node {
+	    label 'slave_linux'
+    }
+}
+
+    tools {
+         maven 'MAVEN_HOME'
+         jdk 'JAVA_HOME'
+         git 'GIT_HOME'
+    }
+
+    stages {
+        stage('pre-build step') {
+            steps {
+		      sh '''
+                echo "Pre Build Step for Webhook Trigges the pipeline on push event"
+		        '''
+	         }
+	    }
+        stage('Git Checkout'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/HimachalamP/Project-Management.git']])
+            }
+        }
+        stage('build'){
+            steps{
+               sh '''
+                mvn package
+                '''
+            }
+        }
+        stage ('Unit Test') {
+	        steps {
+                echo 'Running Unit Testing'
+                sh '''
+                mvn test
+                '''
+             }
+         }
+        stage ('Update Local Repository') {
+             steps {
+                  sh '''
+                     mvn install
+					 rm -rf target/webapp.war
+                     mv target/*.war target/webapp.war
+                  '''
+             }
+        }
+        stage ('Static Code Analysis') {
+             environment {
+             scannerHome = tool 'SONAR_SCANNER'
+             }
+             steps {
+                echo 'Running Static Code Analysis'
+                 withSonarQubeEnv('SONAR_HOME') {
+                 sh '${scannerHome}/bin/sonar-scanner'
+                 }
+            }
+        }
+	stage('Jfrog Artifact Upload') {
+            steps {
+              rtUpload (
+                serverId: 'artifactory',
+                spec: '''{
+                      "files": [
+                        {
+                          "pattern": "*.war",
+                           "target": "local-snapshot-repo"
+                        }
+                    ]
+                }'''
+              )
+          }
+        }
+        stage ('Tomcat Deployment') {
+           steps {
+             script {
+                 deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'tomcat-cred', path: '', url: 'http://18.212.219.254:8080')], contextPath: '/testwebapp', war: '**/*.war'
+                    }
+                  }
+           }
+         stage('post-build step') {
+            steps {
+	    	sh '''
+                echo "Successfull Pipeline for Tomcat Deployment"
+	     	'''
+	      }
+     	}
+    
+     }
+}
