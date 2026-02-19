@@ -1,16 +1,20 @@
-## AWS DevOps CICD PROJECTS
+# AWS DevOps CICD PROJECTS
 
-# Project Struture
+## Project Struture
 
-# src
- * `Ecommerce Website project`
+  ## src
+  * `Ecommerce Website project`
 
-# Project/Tomcat
- * `Jenkinsfile for CICD pipeline`
+  ## Projects
+  ### Tomcat
+  * Jenkinsfile for CICD pipeline
+  * README file
+  * TestResult
+    * `Screenshot for CICD pipeline `
 
-# TestResult/TomcatPipeLine
- * `Screenshot for CICD pipeline `
+  ### Docker-Kubernetes
+  * `Jenkinsfile for Docker-Kubernetes CICD pipeline`
 
-# doc
- * `Architecture reference for VM BASED BUILD AND DEPLOYMENT VIA TOMCAT`
+  ## doc
+  * `Architecture reference for VM BASED BUILD AND DEPLOYMENT VIA TOMCAT`
 
