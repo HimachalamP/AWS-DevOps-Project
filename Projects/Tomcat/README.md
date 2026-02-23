@@ -14,3 +14,5 @@ I've recently been working on enhancing my DevOps expertise by building a CI/CD 
 This hands-on project has been a fantastic way to brush up my skills and stay current with industry practices. From automating builds and tests to ensuring smooth deployments, every step has deepened my understanding of efficient, reliable software delivery.
 
 I’m excited about the potential of these technologies to streamline development workflows and boost productivity.
+
+<img width="10524" height="3084" alt="image" src="https://github.com/user-attachments/assets/c40818dc-cdc9-4304-b857-155fb107302d" />
