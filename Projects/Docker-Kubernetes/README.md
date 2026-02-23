@@ -9,7 +9,7 @@ I've recently been working on enhancing my DevOps expertise by building a CI/CD 
 * Install and Configure kubectl, AWS CLI, EKS Security Group and EKSCTL.
 * Ingress setup: OIDC Provider, IAM Policy, AWS Load Balancer Service account and AWS Ingress LB.
 * AWS - Certificate Manager : Access URL via https
-* Amazon Route 53
+* Amazon Route 53 setup
 * Domain Registrar: Hostinger
 
 This hands-on project has been a fantastic way to brush up my skills and stay current with industry practices. From automating builds and tests to ensuring smooth deployments, every step has deepened my understanding of efficient, reliable software delivery.
