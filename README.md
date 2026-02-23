@@ -10,11 +10,16 @@
   * Jenkinsfile for CICD pipeline
   * README file
   * TestResult
-    * `Screenshot for CICD pipeline `
+    * `Screenshots for CICD pipeline `
 
   ### Docker-Kubernetes
   * `Jenkinsfile for Docker-Kubernetes CICD pipeline`
-
-  ## doc
-  * `Architecture reference for VM BASED BUILD AND DEPLOYMENT VIA TOMCAT`
-
+  * README file
+  * DEV
+    * `Dev Namespace Kubernetes file `
+  * PROD
+    * `Production Namespace Kubernetes file `
+  * SBOX
+    * `SBOX Namespace Kubernetes file `
+  * TestResult
+    * `Screenshots for Docker-Kubernetes project `
